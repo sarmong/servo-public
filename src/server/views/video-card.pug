@@ -16,7 +16,7 @@ mixin card-content
         hx-delete=`/yt/${video.id}`,
         hx-confirm=`Are you sure you want to remove ${video.title} ?`
         hx-target="closest .card"
-        hx-swap="outerHTML"
+        hx-swap="outerHTML transition:true"
         ) Remove
 
       br
