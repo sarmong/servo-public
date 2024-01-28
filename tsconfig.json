@@ -1,0 +1,14 @@
+{
+  // "extends": "@tsconfig/node-lts/tsconfig.json",
+  "compilerOptions": {
+    // "module": "esnext",
+    "module": "nodenext",
+    // "moduleResolution": "Node",
+    // "moduleResolution": "nodenext",
+    // "target": "esnext",
+    // "skipLibCheck": true,
+    // "esModuleInterop": true,
+    "outDir": "./dist",
+    "strict": true
+  }
+}

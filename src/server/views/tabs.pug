@@ -1,0 +1,7 @@
+div.container--tabs
+  div.row
+    div.nav.nav-tabs(role="tablist")
+      each text, name in categories
+        button(hx-get=`/htmx/videos?category=${name}`, role="tab", class=(name == active ? "active" : "" ))= text
+
+    include ./videos-list.pug

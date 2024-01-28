@@ -1,0 +1,81 @@
+.card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.card-grid {
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* display: grid; */
+  /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+  /* gap: 10px; */
+}
+
+.card {
+  display: flex;
+  text-align: left;
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+img {
+  margin-right: 50px;
+  width: 200px;
+}
+
+.title > span {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.container--tabs {
+  margin: 2rem;
+}
+.container--tabs .nav-tabs {
+  float: left;
+  width: 100%;
+  margin: 0;
+  list-style-type: none;
+  border-bottom: 1px solid #ddd;
+}
+.container--tabs .nav-tabs > button {
+  float: left;
+  margin-bottom: -1px;
+}
+.container--tabs .nav-tabs > button {
+  cursor: pointer;
+  float: left;
+  margin-right: 2px;
+  line-height: 1.42857143;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+}
+.container--tabs .nav-tabs > button:hover {
+  border-color: #eee #eee #ddd;
+}
+.container--tabs .nav-tabs > button.active,
+.container--tabs .nav-tabs > button.active:hover,
+.container--tabs .nav-tabs > button.active:focus {
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+.container--tabs .tab-content {
+  float: left;
+  width: 100%;
+}
+.container--tabs .tab-content > .tab-pane {
+  display: none;
+}
+.container--tabs .tab-content > .tab-pane.active {
+  display: block;
+  padding: 2.5% 3.5%;
+  background-color: #efefef;
+}

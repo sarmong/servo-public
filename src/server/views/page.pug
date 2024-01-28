@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    title Youtube Watch Later
+    link(href="styles.css", rel="stylesheet")
+    script(src="./htmx.js")
+  body
+
+    form#saveForm(
+      hx-post="/htmx/create"
+      hx-swap="none"
+      hx-on::after-request="document.querySelector('#saveForm').reset()"
+      )
+      input(size="50", type="text", name="url" required)
+      br
+      label(for="add-video-categories") Choose a category:
+      select(name="category" id="add-video-categories")
+        each text, name in categories
+          option(value=`${name}`) #{text}
+
+      button#saveVideo Save Video to Watch Later
+
+    input(type="search" name="search" placeholder="Search Videos"
+      hx-get="/htmx/videos"
+      hx-trigger="input changed delay:500ms, search"
+      hx-target="#tabs"
+      hx-indicator=".htmx-indicator")
+
+    div#tabs(hx-get="/htmx/videos?category=other", hx-trigger="load delay:100ms", hx-target="#tabs")
+

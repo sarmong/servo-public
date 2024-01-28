@@ -1,0 +1,46 @@
+- const viewCount = video.view_count?.toLocaleString()
+- const uploadDate = displayDate(video.upload_date)
+
+mixin card-content
+  div.card
+    img(src=`${video.thumbnail}`, style="max-width: 100%;")
+    div
+      a.title(href=`${video.url}`) #{video.title} - 
+        span #{video.channel}
+      if video.view_count
+        p #{video.duration} - #{viewCount} views - #{uploadDate}
+      else
+        br
+        br
+      button#removeVideo(
+        hx-delete=`/yt/${video.id}`,
+        hx-confirm=`Are you sure you want to remove ${video.title} ?`
+        hx-target="closest .card"
+        hx-swap="outerHTML"
+        ) Remove
+
+      br
+      br
+      form(
+        hx-patch="/htmx/update-category"
+        hx-target="closest .card"
+        hx-swap="delete transition:true swap:.5s"
+        hx-vals=`{"id": ${video.id}}`
+        )
+        select(name="category" id="categories")
+          each text, name in categories
+            option(value=`${name}` selected=video.category === name) #{text}
+        
+        button#updateCategory(disabled) Update video category
+        script.
+          document.querySelector("#categories").addEventListener("change", function (e) {
+            document.querySelector("#updateCategory").disabled = e.target.value ===
+            "#{video.category}"
+          })
+
+
+if asPartial
+  div(hx-swap-oob="beforebegin:#card-grid")
+    +card-content
+else
+    +card-content
